@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Digital Portfolio</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b1220;--surface:#0f172a;--text:#e5e7eb;--muted:#94a3b8;
+      --brand:#38bdf8;--accent:#8b5cf6;--ring:#22d3ee;--card:#0b1220;
+      --shadow:0 10px 30px rgba(2,8,23,0.35);
+    }
+    :root.light{--bg:#fff;--surface:#f8fafc;--text:#0f172a;--muted:#475569;
+      --brand:#0ea5e9;--accent:#7c3aed;--ring:#0891b2;--card:#fff;
+      --shadow:0 8px 24px rgba(15,23,42,0.12);
+    }
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    .container{max-width:1060px;margin:0 auto;padding:0 1rem}
+    a{color:inherit;text-decoration:none}
+    h2{font-size:2rem;margin-bottom:1rem}
+    .btn{display:inline-block;padding:.6rem 1rem;border-radius:12px;background:var(--brand);color:#fff;font-weight:600}
+    .btn.ghost{background:transparent;border:1px solid var(--muted);color:var(--text)}
+    header{position:sticky;top:0;background:var(--surface);padding:.5rem 0;z-index:10}
+    nav{display:flex;justify-content:space-between;align-items:center}
+    .nav-links{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
+    .hero{padding:5rem 0;text-align:center}
+    .hero h1{font-size:2.5rem;margin:.5rem 0}
+    .section{padding:4rem 0}
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:1rem}
+    .form label{display:block;margin:.5rem 0 .2rem}
+    .form input,.form textarea{width:100%;padding:.6rem;border-radius:8px;border:1px solid var(--muted);background:var(--surface);color:var(--text)}
+    footer{padding:2rem 0;text-align:center;background:var(--surface);margin-top:2rem}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div><strong>My Portfolio</strong></div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="themeToggle" style="padding:.4rem .6rem;border-radius:8px;border:1px solid var(--muted);background:var(--card);color:var(--text)">🌙</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p>Hello, I’m</p>
+      <h1>Your Name</h1>
+      <p>Front-End Developer • UI/UX Enthusiast</p>
+      <a href="#projects" class="btn">View Projects</a>
+      <a href="#contact" class="btn ghost">Contact Me</a>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I’m a developer passionate about creating accessible, responsive websites. I love clean code and modern design.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="section" style="background:var(--surface)">
+    <div class="container">
+      <h2>Skills</h2>
+      <p>HTML • CSS • JavaScript • Responsive Design • GitHub • Figma</p>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="card">
+          <h3>Project One</h3>
+          <p>A responsive landing page with modern design.</p>
+        </div>
+        <div class="card">
+          <h3>Project Two</h3>
+          <p>Dashboard UI with charts and accessible components.</p>
+        </div>
+        <div class="card">
+          <h3>Project Three</h3>
+          <p>Minimal blog template with dark mode.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section" style="background:var(--surface)">
+    <div class="container">
+      <h2>Contact</h2>
+      <form id="contactForm" class="form">
+        <label>Name</label>
+        <input type="text" name="name" required>
+        <label>Email</label>
+        <input type="email" name="email" required>
+        <label>Message</label>
+        <textarea name="message" rows="4" required></textarea>
+        <button type="submit" class="btn" style="margin-top:1rem">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Your Name. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const root=document.documentElement;
+    document.getElementById("themeToggle").addEventListener("click",()=>{
+      root.classList.toggle("light");
+    });
+    // Year
+    document.getElementById("year").textContent=new Date().getFullYear();
+    // Contact form
+    document.getElementById("contactForm").addEventListener("submit",e=>{
+      e.preventDefault();
+      alert("Thanks! Your message has been sent.");
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
